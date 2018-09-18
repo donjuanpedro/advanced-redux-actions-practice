@@ -2,13 +2,20 @@ import {combineReducers} from "redux";
 
 function currentCount(state=0, action){
   if(action.type === "INCREASE_COUNTER"){
-    return action.value;
+    return (currentCount + 1);
   }
   if(action.type === "DECREASE_COUNTER"){
-    return action.value;
+    return (currentCount - 1);
   }
   return state;
 }   
+
+function currentCity(state = "", action){
+    if(action.type === "SET_CURRENT_CITY"){
+      return action.value;
+    }
+  return state;
+}
 
 function users(state =[], action){
   if(action.type === "ADD_USER"){
@@ -31,7 +38,8 @@ function specialText(state = "", action){
 const rootReducer = combineReducers({
   currentCount,
   users,
-  specialText
+  specialText, 
+  currentCity
 })
 
 export default rootReducer;
